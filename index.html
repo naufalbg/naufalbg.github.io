@@ -102,12 +102,6 @@
       line-height: 1.15;
       margin-bottom: 0.7rem;
     }
-    .hero-tagline {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 460px;
-      line-height: 1.65;
-    }
     .hero-meta {
       text-align: right;
       font-size: 0.78rem;
@@ -158,16 +152,6 @@
       background: var(--accent-light);
       color: var(--accent);
     }
-    .sidebar-pill {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 500;
-      padding: 0.2rem 0.55rem;
-      border-radius: 20px;
-      border: 1px solid var(--border-strong);
-      color: var(--text-muted);
-      margin: 0.15rem 0.15rem 0 0;
-    }
     .sidebar-contact a {
       font-size: 0.8rem;
       color: var(--accent);
@@ -191,7 +175,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* ── PAPER CARD ── */
+    /* ── PAPER CARD & IMAGE PREVIEW ── */
     .paper-card {
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -202,6 +186,36 @@
     .paper-card:hover {
       border-color: var(--border-strong);
       box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .paper-layout {
+      display: flex;
+      align-items: stretch;
+    }
+    .paper-preview {
+      width: 150px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .paper-preview img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1.414; /* Proporsi standar kertas A4 */
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border-strong);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      background: #fff; /* Fallback jika gambar belum dimuat */
+    }
+    .paper-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
     }
     .paper-header {
       padding: 1.5rem 1.7rem 1.3rem;
@@ -265,37 +279,6 @@
     }
     .abstract-content.visible { display: block; }
 
-    /* ── SECTIONS INSIDE PAPER ── */
-    .paper-sections {
-      padding: 1.3rem 1.7rem;
-    }
-    .toc-title {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 0.8rem;
-    }
-    .toc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.3rem 1.5rem;
-    }
-    .toc-item {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: baseline;
-      gap: 0.45rem;
-    }
-    .toc-num {
-      font-size: 0.68rem;
-      font-weight: 600;
-      color: var(--text-faint);
-      min-width: 14px;
-    }
-
     /* ── PAPER FOOTER ── */
     .paper-footer {
       padding: 1rem 1.7rem;
@@ -305,7 +288,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 0.8rem;
-      background: var(--surface);
+      margin-top: auto; /* Mendorong footer ke bawah */
     }
     .paper-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag {
@@ -336,70 +319,6 @@
     }
     .download-btn svg { width: 14px; height: 14px; }
 
-    /* ── HIGHLIGHTS ── */
-    .highlights {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.8rem;
-      margin-top: 1.6rem;
-    }
-    .highlight-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.1rem;
-    }
-    .highlight-icon {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .highlight-title {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 0.25rem;
-    }
-    .highlight-desc {
-      font-size: 0.73rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ── AFFILIATION ── */
-    .affil-card {
-      margin-top: 2.5rem;
-      background: var(--navy);
-      border-radius: 10px;
-      padding: 1.5rem 1.7rem;
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-    .affil-logo {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--serif);
-      font-size: 1rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.9);
-      flex-shrink: 0;
-    }
-    .affil-text {}
-    .affil-name {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.92);
-      line-height: 1.4;
-    }
-    .affil-dept {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.52);
-      margin-top: 0.15rem;
-    }
-
     /* ── FOOTER ── */
     .site-footer {
       border-top: 1px solid var(--border);
@@ -417,15 +336,21 @@
       .hero-meta { text-align: left; }
       .layout { grid-template-columns: 1fr; gap: 2rem; }
       .sidebar { position: static; }
-      .toc-grid { grid-template-columns: 1fr; }
-      .highlights { grid-template-columns: 1fr 1fr; }
       .topbar-nav { display: none; }
+      
+      .paper-layout { flex-direction: column; }
+      .paper-preview { 
+        width: 100%; 
+        border-right: none; 
+        border-bottom: 1px solid var(--border); 
+        padding: 1rem; 
+      }
+      .paper-preview img { width: 120px; }
     }
   </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
 <nav class="topbar">
   <div class="topbar-inner">
     <a href="#" class="topbar-brand">N. B. Ganefriady</a>
@@ -436,7 +361,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
   <div class="hero-inner">
     <div>
@@ -458,20 +382,15 @@
   </div>
 </header>
 
-<!-- MAIN LAYOUT -->
 <div class="layout">
 
-  <!-- SIDEBAR -->
   <aside class="sidebar">
-
     <div class="sidebar-section">
       <p class="sidebar-label">Navigation</p>
       <ul class="sidebar-links">
         <li><a href="#publications" class="active">Publications</a></li>
       </ul>
     </div>
-
-  
     <div class="sidebar-section sidebar-contact">
       <p class="sidebar-label">Contact</p>
       <a href="mailto:naufalbagasganefriady@mail.ugm.ac.id">
@@ -479,118 +398,122 @@
         naufalbagasganefriady<br>@mail.ugm.ac.id
       </a>
     </div>
-
-
   </aside>
 
-  <!-- MAIN -->
   <main>
     <p class="section-label" id="publications">Publications &amp; Reports</p>
 
     <article class="paper-card">
-      <div class="paper-header">
-        <p class="paper-type">Technical Review · Control Engineering · 2024</p>
-        <h2 class="paper-title">Advancements in Valve Actuator Technologies for Offshore Platforms and Subsea Installations: A Technical Review</h2>
-        <p class="paper-authors">
-          <span>Naufal Bagas Ganefriady</span>
-        </p>
-      </div>
-
-      <div class="abstract-toggle">
-        <button class="abstract-btn" id="btn-valve" onclick="toggleAbstract('btn-valve', 'content-valve')">
-          <span class="arrow">▶</span> Abstract
-        </button>
-      </div>
-      <div class="abstract-content" id="content-valve">
-        This paper presents a comprehensive technical review of recent advancements in valve actuator technologies as applied to offshore platforms and subsea installations within the oil and gas industry. The study examines four principal actuator types—hydraulic, pneumatic, electric, and electro-hydraulic—with particular emphasis on their suitability under extreme subsea conditions characterised by high hydrostatic pressure, low temperature, corrosive marine environments, and inaccessibility for routine maintenance. Key advancements discussed include the growing adoption of electric actuators in deep-water applications, IIoT integration enabling real-time diagnostics and predictive maintenance, the transition from natural-gas pneumatic actuators to environmentally superior electric alternatives, and the deployment of High Integrity Pressure Protection Systems (HIPPS) alongside Safety Instrumented Systems (SIS). Results indicate that electric actuators present the most favourable profile for subsea and IIoT-integrated deployments, while hydraulic systems retain advantages in applications requiring very high torque at depth.
-        <br><br>
-        <strong>Keywords:</strong> valve actuators · offshore platforms · subsea installations · electric actuators · IIoT · HIPPS · oil and gas automation
-      </div>
-      <div class="paper-footer">
-        <div class="paper-tags">
-          <span class="tag">Valve Actuators</span>
-          <span class="tag">Offshore</span>
-          <span class="tag">Subsea</span>
-          <span class="tag">IIoT</span>
-          <span class="tag">HIPPS</span>
-          <span class="tag">Oil &amp; Gas</span>
+      <div class="paper-layout">
+        <div class="paper-preview">
+          <img src="cover-valve.jpg" alt="Cover Valve Actuators">
         </div>
-        <a href="Advancement in Valve Actuator.pdf" download class="download-btn">
-          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></svg>
-          Download PDF
-        </a>
+        <div class="paper-body">
+          <div class="paper-header">
+            <p class="paper-type">Technical Review · Control Engineering · 2024</p>
+            <h2 class="paper-title">Advancements in Valve Actuator Technologies for Offshore Platforms and Subsea Installations: A Technical Review</h2>
+            <p class="paper-authors"><span>Naufal Bagas Ganefriady</span></p>
+          </div>
+          <div class="abstract-toggle">
+            <button class="abstract-btn" id="btn-valve" onclick="toggleAbstract('btn-valve', 'content-valve')">
+              <span class="arrow">▶</span> Abstract
+            </button>
+          </div>
+          <div class="abstract-content" id="content-valve">
+            This paper presents a comprehensive technical review of recent advancements in valve actuator technologies as applied to offshore platforms and subsea installations within the oil and gas industry. The study examines four principal actuator types—hydraulic, pneumatic, electric, and electro-hydraulic—with particular emphasis on their suitability under extreme subsea conditions characterised by high hydrostatic pressure, low temperature, corrosive marine environments, and inaccessibility for routine maintenance. Key advancements discussed include the growing adoption of electric actuators in deep-water applications, IIoT integration enabling real-time diagnostics and predictive maintenance, the transition from natural-gas pneumatic actuators to environmentally superior electric alternatives, and the deployment of High Integrity Pressure Protection Systems (HIPPS) alongside Safety Instrumented Systems (SIS). Results indicate that electric actuators present the most favourable profile for subsea and IIoT-integrated deployments, while hydraulic systems retain advantages in applications requiring very high torque at depth.
+            <br><br>
+            <strong>Keywords:</strong> valve actuators · offshore platforms · subsea installations · electric actuators · IIoT · HIPPS · oil and gas automation
+          </div>
+          <div class="paper-footer">
+            <div class="paper-tags">
+              <span class="tag">Valve Actuators</span>
+              <span class="tag">Offshore</span>
+              <span class="tag">Subsea</span>
+            </div>
+            <a href="Advancement in Valve Actuator.pdf" download class="download-btn">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></svg>
+              Download PDF
+            </a>
+          </div>
+        </div>
       </div>
     </article>
 
     <article class="paper-card" style="margin-top: 2rem;">
-      <div class="paper-header">
-        <p class="paper-type">Research Paper · IoT &amp; Telecommunication</p>
-        <h2 class="paper-title">Design of a Fault-Tolerant LoRaWAN Communication System for a Mining Early Warning System</h2>
-        <p class="paper-authors">
-          <span>Naufal Bagas Ganefriady</span>
-        </p>
-      </div>
-
-      <div class="abstract-toggle">
-        <button class="abstract-btn" id="btn-lorawan" onclick="toggleAbstract('btn-lorawan', 'content-lorawan')">
-          <span class="arrow">▶</span> Abstract
-        </button>
-      </div>
-      <div class="abstract-content" id="content-lorawan">
-        This paper proposes the design and implementation of a fault-tolerant LoRaWAN communication architecture specifically engineered for Early Warning Systems (EWS) in mining environments. Mining operations often face challenges related to extreme topographies and signal attenuation, which can disrupt critical safety communications. By implementing a redundant gateway topology and adaptive data rate algorithms, this system ensures high availability and reliable packet delivery for sensor nodes monitoring hazardous conditions. The evaluation demonstrates significant improvements in network resilience, reducing packet loss and latency during simulated node and gateway failures.
-        <br><br>
-        <strong>Keywords:</strong> LoRaWAN · IoT · Mining Safety · Early Warning System · Fault-Tolerant · Wireless Sensor Networks
-      </div>
-      <div class="paper-footer">
-        <div class="paper-tags">
-          <span class="tag">LoRaWAN</span>
-          <span class="tag">IoT</span>
-          <span class="tag">Mining Safety</span>
-          <span class="tag">Fault-Tolerant</span>
+      <div class="paper-layout">
+        <div class="paper-preview">
+          <img src="cover-lorawan.jpg" alt="Cover LoRaWAN Mining">
         </div>
-        <a href="Design of a Fault-Tolerant LoRaWAN Communication System for a Mining Early Warning System.pdf" download class="download-btn">
-          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></svg>
-          Download PDF
-        </a>
+        <div class="paper-body">
+          <div class="paper-header">
+            <p class="paper-type">Research Paper · IoT &amp; Telecommunication</p>
+            <h2 class="paper-title">Design of a Fault-Tolerant LoRaWAN Communication System for a Mining Early Warning System</h2>
+            <p class="paper-authors"><span>Naufal Bagas Ganefriady</span></p>
+          </div>
+          <div class="abstract-toggle">
+            <button class="abstract-btn" id="btn-lorawan" onclick="toggleAbstract('btn-lorawan', 'content-lorawan')">
+              <span class="arrow">▶</span> Abstract
+            </button>
+          </div>
+          <div class="abstract-content" id="content-lorawan">
+            This paper proposes the design and implementation of a fault-tolerant LoRaWAN communication architecture specifically engineered for Early Warning Systems (EWS) in mining environments. Mining operations often face challenges related to extreme topographies and signal attenuation, which can disrupt critical safety communications. By implementing a redundant gateway topology and adaptive data rate algorithms, this system ensures high availability and reliable packet delivery for sensor nodes monitoring hazardous conditions. The evaluation demonstrates significant improvements in network resilience, reducing packet loss and latency during simulated node and gateway failures.
+            <br><br>
+            <strong>Keywords:</strong> LoRaWAN · IoT · Mining Safety · Early Warning System · Fault-Tolerant · Wireless Sensor Networks
+          </div>
+          <div class="paper-footer">
+            <div class="paper-tags">
+              <span class="tag">LoRaWAN</span>
+              <span class="tag">IoT</span>
+              <span class="tag">Mining Safety</span>
+            </div>
+            <a href="Design of a Fault-Tolerant LoRaWAN Communication System for a Mining Early Warning System.pdf" download class="download-btn">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></svg>
+              Download PDF
+            </a>
+          </div>
+        </div>
       </div>
     </article>
 
     <article class="paper-card" style="margin-top: 2rem;">
-      <div class="paper-header">
-        <p class="paper-type">Technical Analysis · Computer Science</p>
-        <h2 class="paper-title">Analysis of Prefix Front Coding</h2>
-        <p class="paper-authors">
-          <span>Naufal Bagas Ganefriady</span>
-        </p>
-      </div>
-
-      <div class="abstract-toggle">
-        <button class="abstract-btn" id="btn-prefix" onclick="toggleAbstract('btn-prefix', 'content-prefix')">
-          <span class="arrow">▶</span> Abstract
-        </button>
-      </div>
-      <div class="abstract-content" id="content-prefix">
-        This technical analysis explores the efficiency and implementation mechanics of the Prefix Front Coding algorithm for data compression, specifically focusing on string processing within large datasets. Prefix Front Coding optimizes storage by identifying and compressing common prefixes among sequentially stored strings, which is particularly beneficial for distributed databases and search engine indices. The study analyzes the algorithmic time complexity during encoding and decoding phases, memory overhead, and compression ratios achieved across various data distributions. Results highlight the trade-offs between processing speed and storage efficiency, offering optimization strategies for real-time systems.
-        <br><br>
-        <strong>Keywords:</strong> Data Compression · Prefix Front Coding · Algorithm Optimization · String Processing · Database Systems
-      </div>
-      <div class="paper-footer">
-        <div class="paper-tags">
-          <span class="tag">Data Compression</span>
-          <span class="tag">Algorithms</span>
-          <span class="tag">Optimization</span>
+      <div class="paper-layout">
+        <div class="paper-preview">
+          <img src="cover-prefix.jpg" alt="Cover Prefix Front Coding">
         </div>
-        <a href="Analysis of Prefix Front Coding.pdf" download class="download-btn">
-          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></svg>
-          Download PDF
-        </a>
+        <div class="paper-body">
+          <div class="paper-header">
+            <p class="paper-type">Technical Analysis · Computer Science</p>
+            <h2 class="paper-title">Analysis of Prefix Front Coding</h2>
+            <p class="paper-authors"><span>Naufal Bagas Ganefriady</span></p>
+          </div>
+          <div class="abstract-toggle">
+            <button class="abstract-btn" id="btn-prefix" onclick="toggleAbstract('btn-prefix', 'content-prefix')">
+              <span class="arrow">▶</span> Abstract
+            </button>
+          </div>
+          <div class="abstract-content" id="content-prefix">
+            This technical analysis explores the efficiency and implementation mechanics of the Prefix Front Coding algorithm for data compression, specifically focusing on string processing within large datasets. Prefix Front Coding optimizes storage by identifying and compressing common prefixes among sequentially stored strings, which is particularly beneficial for distributed databases and search engine indices. The study analyzes the algorithmic time complexity during encoding and decoding phases, memory overhead, and compression ratios achieved across various data distributions. Results highlight the trade-offs between processing speed and storage efficiency, offering optimization strategies for real-time systems.
+            <br><br>
+            <strong>Keywords:</strong> Data Compression · Prefix Front Coding · Algorithm Optimization · String Processing · Database Systems
+          </div>
+          <div class="paper-footer">
+            <div class="paper-tags">
+              <span class="tag">Data Compression</span>
+              <span class="tag">Algorithms</span>
+              <span class="tag">Optimization</span>
+            </div>
+            <a href="Analysis of Prefix Front Coding.pdf" download class="download-btn">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></svg>
+              Download PDF
+            </a>
+          </div>
+        </div>
       </div>
     </article>
 
   </main>
 </div>
 
-<!-- SITE FOOTER -->
 <footer class="site-footer">
   <p>© 2024 Naufal Bagas Ganefriady · Electronics &amp; Instrumentation, <a href="https://ugm.ac.id" target="_blank">Universitas Gadjah Mada</a></p>
   <p style="margin-top:0.4rem;">Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
