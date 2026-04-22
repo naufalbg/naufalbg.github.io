@@ -189,20 +189,20 @@
     }
     .paper-layout {
       display: flex;
-      flex-direction: column; /* Mengubah susunan menjadi Atas (Gambar) & Bawah (Teks) */
+      flex-direction: column; 
     }
     .paper-preview {
       width: 100%;
       background: #ffffff;
-      border-bottom: 1px solid var(--border); /* Garis batas dipindah ke bawah gambar */
-      padding: 0; /* Dihilangkan agar gambar menyentuh ujung border */
+      border-bottom: 1px solid var(--border); 
+      padding: 0; 
       display: block;
     }
     .paper-preview img {
       width: 100%;
-      height: 220px; /* Tinggi optimal untuk banner */
-      object-fit: cover; /* Mengisi penuh area tanpa mengubah proporsi (terpotong rapi) */
-      object-position: top center; /* Fokus meng-crop bagian paling atas kertas (Judul) */
+      height: 220px; 
+      object-fit: cover; 
+      object-position: top center; 
       display: block;
     }
     .paper-body {
@@ -280,7 +280,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 0.8rem;
-      margin-top: auto; /* Mendorong footer ke bawah */
+      margin-top: auto; 
     }
     .paper-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag {
@@ -322,27 +322,24 @@
     .site-footer a { color: var(--accent); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
 
-    /* ── MOBILE ── */
+    /* ── MOBILE OPTIMIZATION ── */
     @media (max-width: 680px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-meta { text-align: left; }
-      .layout { grid-template-columns: 1fr; gap: 2rem; }
+      .layout { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem; }
       .sidebar { position: static; }
       .topbar-nav { display: none; }
     
-      
-      .paper-layout { flex-direction: column; }
       .paper-preview { 
-        width: 100%; 
-        border-right: none; 
-        border-bottom: 1px solid var(--border); 
-        padding: 1.2rem; 
+        padding: 0; /* Remove padding to allow image to span full width if needed */
+        background: #fdfdfd;
       }
       .paper-preview img { 
-        width: 100%; 
-        max-width: 320px; /* Diperbesar agar teks di gambar tetap terbaca di HP */
-        margin: 0 auto;
-        display: block;
+        height: auto; /* Allow height to adjust naturally */
+        max-height: 250px;
+        object-fit: contain; /* This prevents the cropping on sides */
+        background: #fdfdfd;
+        padding: 1rem 0; /* Optional: adds space above/below image */
       }
     }
   </style>
@@ -384,9 +381,12 @@
 
   <aside class="sidebar">
     <div class="sidebar-section">
-      <p class="sidebar-label">Navigation</p>
+      <p class="sidebar-label">Filter by Field</p>
       <ul class="sidebar-links">
-        <li><a href="#publications" class="active">Publications</a></li>
+        <li><a href="#" class="filter-btn active" data-filter="all">Show All</a></li>
+        <li><a href="#" class="filter-btn" data-filter="telecom">Network Infrasturcture</a></li>
+        <li><a href="#" class="filter-btn" data-filter="control">Control & Instrumentation</a></li>
+        <li><a href="#" class="filter-btn" data-filter="cs">Computer Science</a></li>
       </ul>
     </div>
     <div class="sidebar-section sidebar-contact">
@@ -405,7 +405,7 @@
   <main>
     <p class="section-label" id="publications">Publications &amp; Reports</p>
 
-    <article class="paper-card">
+    <article class="paper-card" data-category="control">
       <div class="paper-layout">
         <div class="paper-preview">
           <img src="cover-valve.png" alt="Cover Valve Actuators">
@@ -441,7 +441,7 @@
       </div>
     </article>
 
-    <article class="paper-card" style="margin-top: 2rem;">
+    <article class="paper-card" style="margin-top: 2rem;" data-category="telecom">
       <div class="paper-layout">
         <div class="paper-preview">
           <img src="cover-lorawan.png" alt="Cover LoRaWAN Mining">
@@ -477,7 +477,7 @@
       </div>
     </article>
 
-    <article class="paper-card" style="margin-top: 2rem;">
+    <article class="paper-card" style="margin-top: 2rem;" data-category="cs">
       <div class="paper-layout">
         <div class="paper-preview">
           <img src="cover-prefix.png" alt="Cover Prefix Front Coding">
@@ -512,7 +512,7 @@
         </div>
       </div>
     </article>
-    <article class="paper-card" style="margin-top: 2rem;">
+    <article class="paper-card" style="margin-top: 2rem;" data-category="cs">
       <div class="paper-layout">
         <div class="paper-preview">
           <img src="cover-svm.png" alt="Cover SVM Gradient Projection">
@@ -566,17 +566,25 @@
     }
   }
 
-  const links = document.querySelectorAll('.sidebar-links a');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(l => l.classList.remove('active'));
-        const match = document.querySelector(`.sidebar-links a[href="#${e.target.id}"]`);
-        if (match) match.classList.add('active');
-      }
+  document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      
+      const filterValue = button.getAttribute('data-filter');
+      const articles = document.querySelectorAll('.paper-card');
+
+      articles.forEach(article => {
+        if (filterValue === 'all' || article.getAttribute('data-category') === filterValue) {
+          article.style.display = 'block';
+        } else {
+          article.style.display = 'none';
+        }
+      });
     });
-  }, { rootMargin: '-30% 0px -60% 0px' });
-  document.querySelectorAll('main [id]').forEach(el => observer.observe(el));
+  });
 </script>
 
 </body>
