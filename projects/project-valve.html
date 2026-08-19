@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advancements in Valve Actuator Technologies - Naufal Bagas Ganefriady</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- (Reusing the same CSS block as project-landslide.html) -->
+    <style>
+        :root {
+            --bg-color: #ffffff; --bg-secondary: #f4f4f4; --text-primary: #000000; --text-secondary: #222222;
+            --accent-color: #b32a2a; --border-color: #e0e0e0;
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; --font-serif: 'Playfair Display', Georgia, serif;
+            --container-width: 800px; --header-width: 1200px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-ui); color: var(--text-primary); background-color: var(--bg-color); line-height: 1.6; -webkit-font-smoothing: antialiased;  zoom: 0.8;}
+        a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+        img { max-width: 100%; display: block; }
+        .main-header { border-bottom: 1px solid var(--border-color); position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 100; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: var(--header-width); margin: 0 auto; }
+        .header-left, .header-right { flex: 1; display: flex; align-items: center; gap: 1.5rem; }
+        .header-right { justify-content: flex-end; }
+        .header-center { flex: 2; text-align: center; }
+        .logo h1 { font-family: var(--font-serif); font-weight: 700; font-size: 1.8rem; letter-spacing: -0.01em; color: var(--text-primary); }
+        .header-link { font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); }
+        .header-link:hover { color: var(--text-primary); }
+        .subscribe-btn { background-color: var(--text-primary); color: #fff; padding: 0.6rem 1.2rem; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 2px; transition: background-color 0.2s ease, transform 0.1s ease; }
+        .subscribe-btn:hover { background-color: #333; color: #fff; }
+        .article-wrapper { max-width: var(--container-width); margin: 0 auto; padding: 4rem 2rem; }
+        .article-category { display: inline-block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-color); margin-bottom: 1rem; }
+        .article-title { font-family: var(--font-serif); font-size: 3rem; line-height: 1.1; margin-bottom: 2rem; color: var(--text-primary); }
+        .slider-container { position: relative; width: 100%; margin-bottom: 3rem; border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; background: #fafafa; }
+        .slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+        .slider::-webkit-scrollbar { display: none; }
+        .slide { flex: 0 0 100%; scroll-snap-align: start; display: flex; justify-content: center; align-items: center; padding: 1rem; height: 500px; }
+        .slide img { max-height: 100%; max-width: 100%; object-fit: contain; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: 1px solid var(--border-color); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 10; transition: background 0.2s; }
+        .slider-btn:hover { background: #fff; }
+        .slider-prev { left: 10px; } .slider-next { right: 10px; }
+        .article-content { font-size: 1.125rem; color: var(--text-secondary); line-height: 1.8; }
+        .article-content p { margin-bottom: 1.5rem; }
+        .download-box { margin-top: 3rem; padding: 2rem; background: var(--bg-secondary); border-radius: 4px; border: 1px solid var(--border-color); }
+        .download-box h3 { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem; }
+        .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; background: var(--text-primary); padding: 0.8rem 1.5rem; border-radius: 2px; transition: background 0.2s; }
+        .download-btn:hover { background: #333; }
+        .main-footer { background-color: #000; color: #fff; padding: 4rem 2rem; text-align: center; }
+        .footer-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .footer-content p { font-size: 0.85rem; color: #888; }
+    
+        .article-content p:first-of-type::first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            padding-top: 0.5rem;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        .article-content { font-size: 1.15rem; letter-spacing: -0.01em; }
+    
+        /* Project Sliders */
+        .slider-container { position: relative; width: 100%; border-radius: 4px; overflow: hidden; background: #fafafa; }
+        .slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+        .slider::-webkit-scrollbar { display: none; }
+        .slide { flex: 0 0 100%; scroll-snap-align: start; display: flex; justify-content: center; align-items: center; }
+        .slide img { width: 100%; object-fit: contain; display: block; max-height: 500px; background: #f8f9fb; }
+        .story-card .slide img { max-height: 250px; background: #f8f9fb; }
+        .featured-story .slide img { max-height: 500px; background: #fafafa; }
+        .article-content { margin-top: 2rem; }
+        
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: 1px solid var(--border-color); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 10; font-size: 0.8rem; transition: background 0.2s; }
+        .slider-btn:hover { background: #fff; }
+        .slider-prev { left: 5px; } .slider-next { right: 5px; }
+
+    
+        /* Page Transitions */
+        body { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        body.fade-out { animation: fadeOut 0.4s ease-in-out forwards; }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+    </style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-top">
+            <div class="header-left" style="display: flex; gap: 2rem; align-items: center;">
+                <a href="../index.html" class="logo" style="text-decoration: none; color: var(--text-primary);">
+                    <h1 style="font-size: 1.25rem;">Naufal Bagas Ganefriady</h1>
+                </a>
+                <a href="../index.html" class="header-link">← Back</a>
+            </div>
+            <div class="header-right">
+                
+                <a href="../about.html" class="header-link">About</a>
+                <a href="mailto:naufalbagasganefriady@mail.ugm.ac.id" class="subscribe-btn">Contact Me</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-wrapper">
+        <span class="article-category" data-aos="fade-in">Control and Instrumentation</span>
+        <h1 class="article-title" data-aos="fade-up">Advancements in Valve Actuator Technologies for Offshore Platforms</h1>
+        
+        <!-- Image Slider -->
+        <div class="slider-container" data-aos="fade-up" data-aos-delay="200" style="margin-bottom: 3rem;">
+                        <button class="slider-btn slider-prev" onclick="moveSlide(this, -1)">❮</button>
+                        <div class="slider">
+                            <div class="slide"><img src="../assets/images/Valve-actuators/cover-valve.png" alt="Project Image"></div>
+                            <div class="slide"><img src="../assets/images/Valve-actuators/Screenshot 2026-08-14 at 19.46.33.png" alt="Project Image"></div>
+                            <div class="slide"><img src="../assets/images/Valve-actuators/Screenshot 2026-08-14 at 19.46.43.png" alt="Project Image"></div>
+                        </div>
+                        <button class="slider-btn slider-next" onclick="moveSlide(this, 1)">❯</button>
+                    </div>
+
+        <div class="article-content" data-aos="fade-up" data-aos-delay="300">
+            <p>In this technical review, I wanted to dive deep into the recent advancements in valve actuator technologies, specifically looking at how they are applied in extreme environments like offshore platforms and subsea installations within the oil and gas industry.</p>
+            
+            <p>I examined four principal types of actuators: hydraulic, pneumatic, electric, and electro-hydraulic. The goal was to understand their suitability under intense subsea conditions characterized by high hydrostatic pressure, extreme temperatures, corrosive environments, and the sheer difficulty of routine maintenance.</p>
+            
+            <p>Through my research, I highlighted several key shifts in the industry. For instance, there's a growing adoption of electric actuators in deep-water applications, largely driven by IIoT (Industrial Internet of Things) integration which allows for real-time diagnostics and predictive maintenance. I also tracked the transition away from natural-gas pneumatic actuators toward more environmentally friendly electric alternatives, and the deployment of High Integrity Pressure Protection Systems (HIPPS).</p>
+            
+            <p>Ultimately, my findings suggest that electric actuators present the most favorable profile for the future of subsea and IIoT-integrated deployments, though hydraulic systems definitely still hold an advantage when you need massive torque at extreme depths.</p>
+        </div>
+
+        <div class="download-box" data-aos="zoom-in" data-aos-delay="100">
+            <h3>Read the full paper</h3>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 0.95rem;">Download the original PDF to view the complete methodology, results, and architectural details.</p>
+            <a href="../assets/pdfs/Advancement in Valve Actuator.pdf" download class="download-btn">
+                Download PDF
+                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="margin-left: 8px;"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></svg>
+            </a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">N. B. Ganefriady</div>
+            <p>&copy; 2026 Naufal Bagas Ganefriady. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function moveSlide(direction) {
+            const slider = document.getElementById('imageSlider');
+            const slideWidth = slider.clientWidth;
+            slider.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+        }
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+    </script>
+
+    <script>
+        // Page Transitions
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a').forEach(link => {
+                if (link.hostname === window.location.hostname && link.target !== "_blank" && !link.href.includes('#')) {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = this.href;
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => {
+                            window.location.href = target;
+                        }, 350);
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
