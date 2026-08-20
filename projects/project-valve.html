@@ -151,7 +151,7 @@
         function moveSlide(direction) {
             const slider = document.getElementById('imageSlider');
             const slideWidth = slider.clientWidth;
-            slider.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+            slider.scrollBy({ left: direction * (slideWidth + 10), behavior: 'smooth' });
         }
     </script>
 

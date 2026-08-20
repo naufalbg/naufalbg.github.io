@@ -1104,7 +1104,7 @@
         function moveSlide(btn, direction) {
             const slider = btn.parentElement.querySelector('.slider');
             const slideWidth = slider.clientWidth;
-            slider.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+            slider.scrollBy({ left: direction * (slideWidth + 10), behavior: 'smooth' });
         }
 
         // Auto-slide for the hero slider
@@ -1117,7 +1117,7 @@
                 setInterval(() => {
                     // Check if we reached the end of the scroll
                     const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
-                    if (slider.scrollLeft >= maxScrollLeft - 5) {
+                    if (slider.scrollLeft >= maxScrollLeft - 15) {
                         // Scroll back to the beginning
                         slider.scrollTo({ left: 0, behavior: 'smooth' });
                     } else {
