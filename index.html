@@ -1101,10 +1101,13 @@
     </footer>
 
     <script>
-        function moveSlide(btn, direction) {
+                function moveSlide(btn, direction) {
             const slider = btn.parentElement.querySelector('.slider');
             const slideWidth = slider.clientWidth;
-            slider.scrollBy({ left: direction * (slideWidth + 10), behavior: 'smooth' });
+            let currentIndex = Math.round(slider.scrollLeft / slideWidth);
+            let nextIndex = currentIndex + direction;
+            slider.scrollTo({ left: nextIndex * slideWidth, behavior: 'smooth' });
+        });
         }
 
         // Auto-slide for the hero slider
